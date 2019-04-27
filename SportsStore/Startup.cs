@@ -26,9 +26,10 @@ namespace SportsStore
             app.UseDeveloperExceptionPage(); // details are shown when exception occurs during development phase
             app.UseStatusCodePages(); // adds imple message to HTTP responses
             app.UseStaticFiles(); // enables serving static files from the wwwroot folder
-            app.UseMvc(routes => // enables ASP.NET Core MVC
-            {
-
+            app.UseMvc(routes => {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Product}/{action=List}/{id?}");
             });
 
             //if (env.IsDevelopment())
