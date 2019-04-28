@@ -24,7 +24,7 @@ namespace SportsStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
-                Configuration["Data:SportStoreProducts:ConnectionString"]));
+                Configuration["ConnectionStrings:DefaultConnection"]));
 
             services.AddTransient<IProductRepository, EFProductRepository>();
             //services.AddTransient<IProductRepository, FakeProductRepository>(); // if a controller needs an implementation of the IProductRepository it should receive an instance of the FakeProductRepository class
