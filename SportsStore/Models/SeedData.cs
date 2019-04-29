@@ -71,6 +71,13 @@ namespace SportsStore.Models
                     },
                     new Product
                     {
+                        Name = "Human Chess Board",
+                        Description = "A fun game for the family",
+                        Category = "Chess",
+                        Price = 75
+                    },
+                    new Product
+                    {
                         Name = "Bling-Bling King",
                         Description = "Gold-plated, diamond-studded King",
                         Category = "Chess",
