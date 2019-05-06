@@ -29,6 +29,8 @@ namespace SportsStore
             services.AddTransient<IProductRepository, EFProductRepository>();
             //services.AddTransient<IProductRepository, FakeProductRepository>(); // if a controller needs an implementation of the IProductRepository it should receive an instance of the FakeProductRepository class
             services.AddMvc();
+            services.AddMemoryCache(); // for sessions (state of the session is stored in memory)
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +39,7 @@ namespace SportsStore
             app.UseDeveloperExceptionPage(); // details are shown when exception occurs during development phase
             app.UseStatusCodePages(); // adds imple message to HTTP responses
             app.UseStaticFiles(); // enables serving static files from the wwwroot folder
+            app.UseSession(); // associates requests with sessions when http requests arrive from the client
             app.UseMvc(routes => {
 
                 routes.MapRoute(
