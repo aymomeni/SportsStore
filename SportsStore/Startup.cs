@@ -29,7 +29,9 @@ namespace SportsStore
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp)); // related to shopping cart
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // related to shopping cart
-            //services.AddTransient<IProductRepository, FakeProductRepository>(); // if a controller needs an implementation of the IProductRepository it should receive an instance of the FakeProductRepository class
+                                                                                //services.AddTransient<IProductRepository, FakeProductRepository>(); // if a controller needs an implementation of the IProductRepository it should receive an instance of the FakeProductRepository class
+
+            services.AddTransient<IOrderRepository, EFOrderRepository>();
             services.AddMvc();
             services.AddMemoryCache(); // for sessions (state of the session is stored in memory)
             services.AddSession();
