@@ -10,8 +10,8 @@ using SportsStore.Models;
 namespace SportsStore.Migrations.AppIdentityDb
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20190510042846_Initial")]
-    partial class Initial
+    [Migration("20190510224351_Initital")]
+    partial class Initital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
