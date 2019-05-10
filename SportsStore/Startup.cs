@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SportsStore.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace SportsStore
 {
@@ -25,6 +26,10 @@ namespace SportsStore
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
                 Configuration["ConnectionStrings:DefaultConnection"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp)); // related to shopping cart
@@ -44,6 +49,7 @@ namespace SportsStore
             app.UseStatusCodePages(); // adds imple message to HTTP responses
             app.UseStaticFiles(); // enables serving static files from the wwwroot folder
             app.UseSession(); // associates requests with sessions when http requests arrive from the client
+            app.UseAuthentication();
             app.UseMvc(routes => {
 
                 routes.MapRoute(
