@@ -27,6 +27,10 @@ namespace SportsStore
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
                 Configuration["ConnectionStrings:DefaultConnection"]));
 
+            services.AddDbContext<AppIdentityDbContext>(options 
+                => options.UseSqlServer(
+                    Configuration["ConnectionString:DefaultConnection"]));
+
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppIdentityDbContext>()
                 .AddDefaultTokenProviders();
